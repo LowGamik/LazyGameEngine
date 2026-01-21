@@ -21,10 +21,24 @@ bool Engine::InitEngine(){
 }
 
 void Engine::StartEngineLoop(){
+    this->lastTime = SDL_GetTicks();
+
     while(this->isRunning){
+        this->currentTime = SDL_GetTicks();
+        this->deltaTime = (currentTime-lastTime)/1000.0f;
+        this->lastTime = currentTime;
+
         while (SDL_PollEvent(&this->events)){
             if(events.type == SDL_QUIT) isRunning = false;
         }
+
+        SDL_SetRenderDrawColor(this->renderer,255,255,255,255);
+        SDL_RenderClear(this->renderer);
+
+        SDL_RenderPresent(this->renderer);
+
+
+        SDL_Delay(7);
     }
 }
 

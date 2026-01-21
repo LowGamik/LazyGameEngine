@@ -1,11 +1,12 @@
 #define SDL_MAIN_HANDLED
 #include<iostream>
 #include<SDL2/SDL.h>
+#include<memory>
 
 #include "../include/engine.hpp"
 
 int main(){
-    Engine *engine = new Engine();
+    auto engine = std::make_unique<Engine>();
 
     if(!(engine->InitEngine())){
         return 1;
