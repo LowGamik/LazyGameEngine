@@ -22,6 +22,7 @@ bool Engine::InitEngine(){
 
 void Engine::StartEngineLoop(){
     this->lastTime = SDL_GetTicks();
+    float frameDuration;
 
     while(this->isRunning){
         this->currentTime = SDL_GetTicks();
@@ -32,13 +33,25 @@ void Engine::StartEngineLoop(){
             if(events.type == SDL_QUIT) isRunning = false;
         }
 
+        for(auto& object : this->objects){
+            object.Update(this->deltaTime);
+        }
+
         SDL_SetRenderDrawColor(this->renderer,255,255,255,255);
         SDL_RenderClear(this->renderer);
 
+        for(auto& object : this->objects){
+        object.Render(this->renderer);
+        }
+
         SDL_RenderPresent(this->renderer);
 
+        
 
-        SDL_Delay(7);
+        frameDuration = (SDL_GetTicks()- currentTime)/1000.0f;
+        if(frameDuration < 1.0f/60.0f){
+            SDL_Delay((Uint32)((1.0f/60.0f-frameDuration)*1000.0f));
+        }
     }
 }
 

@@ -4,6 +4,7 @@
 #include<SDL2/SDL.h>
 
 #include<vector>
+#include <memory>
 #include"objects.hpp"
 
 class Engine{
@@ -18,6 +19,7 @@ class Engine{
     public:
     Engine() : window(nullptr), renderer(nullptr), isRunning(false), deltaTime(0.0), lastTime(0.0), currentTime(0.0) {}
 
+    void AddObject(const GameObject& obj) {objects.push_back(obj);}
     bool InitEngine();
     void StartEngineLoop();
     void QuitEngine();
