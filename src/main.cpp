@@ -8,8 +8,9 @@
 
 int main(){
     auto engine = std::make_unique<Engine>();
-    GameObject player(100.0f,100.0f);
-    engine->AddObject(player);
+    engine->AddObject(std::make_unique<GameObject>());
+    engine->AddObject(std::make_unique<GameObject>(0,50));
+    engine->AddObject(std::make_unique<GameObject>(0,100));
 
     if(!(engine->InitEngine())){
         return 1;

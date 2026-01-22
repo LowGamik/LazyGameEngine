@@ -13,13 +13,13 @@ class Engine{
     SDL_Renderer *renderer;
     SDL_Event events;
     bool isRunning;
-    std::vector<GameObject> objects;
+    std::vector<std::unique_ptr<GameObject>> objects;
     float deltaTime, lastTime, currentTime;
 
     public:
     Engine() : window(nullptr), renderer(nullptr), isRunning(false), deltaTime(0.0), lastTime(0.0), currentTime(0.0) {}
 
-    void AddObject(const GameObject& obj) {objects.push_back(obj);}
+    void AddObject(std::unique_ptr<GameObject> obj) {this->objects.push_back(std::move(obj));}
     bool InitEngine();
     void StartEngineLoop();
     void QuitEngine();

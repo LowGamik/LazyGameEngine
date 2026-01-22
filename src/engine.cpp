@@ -34,14 +34,14 @@ void Engine::StartEngineLoop(){
         }
 
         for(auto& object : this->objects){
-            object.Update(this->deltaTime);
+            object->Update(this->deltaTime);
         }
 
         SDL_SetRenderDrawColor(this->renderer,255,255,255,255);
         SDL_RenderClear(this->renderer);
 
         for(auto& object : this->objects){
-        object.Render(this->renderer);
+            object->Render(this->renderer);
         }
 
         SDL_RenderPresent(this->renderer);
