@@ -1,58 +1,45 @@
 # LazyGameEngine
 
-A minimal C++ game engine using SDL2. This project demonstrates a simple architecture for creating and rendering moving objects in a window.
+A simple C++ game engine using SDL2 and SDL2_image.
 
 ## Features
 
-- Basic game loop with frame limiting (60 FPS)
-- Object management (add, update, render)
-- Simple player object that moves horizontally and wraps around the screen
-- SDL2 window and renderer setup/cleanup
+- Basic game loop
+- Object management
+- Texture loading and rendering
+- Written in modern C++
 
-## Getting Started
+## Requirements
 
-### Prerequisites
+- [SDL2](https://www.libsdl.org/)
+- [SDL2_image](https://www.libsdl.org/projects/SDL_image/)
+- C++17 compatible compiler
 
-- C++17 or newer
-- [SDL2](https://www.libsdl.org/) development libraries
+## Build Instructions (Windows)
 
-### Building
-
-```sh
-g++ -std=c++17 -Iinclude -L<SDL2_LIB_PATH> src/main.cpp src/engine.cpp src/objects.cpp -lSDL2 -o LazyGameEngine
-```
-Replace `<SDL2_LIB_PATH>` with your SDL2 library path.
-
-Or if you are using windows, there is a prepered file for you
-
-### Running
-
-A window will open with a red square moving horizontally.
-
-## Project Structure
+1. Clone the repository and place SDL2 and SDL2_image in the `third_party` folder.
+2. Place your assets (images) in the `assets` folder.
+3. Run `compile.bat` to build the project.
 
 ```
-LazyGameEngine/
-├── include/
-│   ├── engine.hpp
-│   └── objects.hpp
-├── src/
-│   ├── main.cpp
-│   ├── engine.cpp
-│   └── objects.cpp
-└── README.md
+@ECHO OFF
+g++ ./src/*.cpp -o build/game.exe -Ithird_party/SDL2/include -Ithird_party/SDL2_image/include ...
 ```
 
-## Code Overview
+## Usage
 
-- **Engine**: Handles window, renderer, game loop, and object management.
-- **GameObject**: Represents entities with position, update, and render logic.
+After building, run `build/game.exe`. The engine will open a window and display the objects you add in `main.cpp`.
+
+## Example
+
+```cpp
+auto engine = std::make_unique<Engine>();
+engine->AddObject(std::make_unique<GameObject>(350.0f, 250.0f, "index.jpg"));
+engine->InitEngine();
+engine->StartEngineLoop();
+engine->QuitEngine();
+```
 
 ## License
 
-MIT (add your own license if needed)
-
-## Credits
-
-- [SDL2](https://www.libsdl.org/)
-- Your code!
+MIT License. See [LICENSE](LICENSE) for details.
