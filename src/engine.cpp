@@ -1,19 +1,23 @@
 #include "../include/engine.hpp"
+#include<iostream>
 
 bool Engine::InitEngine(){
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
+        std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl; 
         return false;
     }
     isRunning = true;
     this->window = SDL_CreateWindow("game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800,600, SDL_WINDOW_SHOWN);
 
     if(this->window == nullptr){
+        std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         return false;
     }
 
     this->renderer = SDL_CreateRenderer(this->window,-1,SDL_RENDERER_ACCELERATED);
 
     if(this->renderer == nullptr){
+        std::cerr << "Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         return false;
     }
 
