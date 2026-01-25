@@ -12,7 +12,7 @@ class GameObject{
     std::string imgName;
 
     public:
-    GameObject(float x = 0, float y = 0, std::string inputImg = ""): posX(x), posY(y), imgName(inputImg) {}
+    GameObject(float x = 0, float y = 0, std::string inputImg = "index.jpg"): posX(x), posY(y), imgName(inputImg) {}
 
     
     virtual void Update(float dt);
