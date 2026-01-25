@@ -28,6 +28,10 @@ void Engine::StartEngineLoop(){
     this->lastTime = SDL_GetTicks();
     float frameDuration;
 
+    for(auto& object : this->objects){
+        object->LoadTexture(this->renderer);
+    }
+
     while(this->isRunning){
         this->currentTime = SDL_GetTicks();
         this->deltaTime = (currentTime-lastTime)/1000.0f;

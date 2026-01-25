@@ -1,6 +1,7 @@
 #define SDL_MAIN_HANDLED
 #include<iostream>
 #include<SDL2/SDL.h>
+#include<SDL2/SDL_image.h>
 #include<memory>
 
 #include "../include/engine.hpp"
@@ -8,9 +9,8 @@
 
 int main(){
     auto engine = std::make_unique<Engine>();
-    engine->AddObject(std::make_unique<GameObject>());
-    engine->AddObject(std::make_unique<GameObject>(0,50));
-    engine->AddObject(std::make_unique<GameObject>(0,100));
+    engine->AddObject(std::make_unique<GameObject>(350.0f,250.0f,"index.jpg"));
+
 
     if(!(engine->InitEngine())){
         return 1;
