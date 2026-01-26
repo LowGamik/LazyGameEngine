@@ -5,7 +5,11 @@
 #include<string>
 
 void GameObject::Update(float dt){
+    this->posX += 50.0f * dt;
 
+    if(this->posX > 800.0f){
+        this->posX = -100.0f;
+    }
 }
 
 void GameObject::Render(SDL_Renderer *ren){

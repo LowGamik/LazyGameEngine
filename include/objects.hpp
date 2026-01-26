@@ -8,6 +8,7 @@
 class GameObject{
     private:
     float posX, posY;
+    int width, height;
     SDL_Texture *texture;
     std::string imgName;
 
@@ -19,7 +20,26 @@ class GameObject{
     virtual void Render(SDL_Renderer *ren);
     virtual void LoadTexture(SDL_Renderer *ren);
 
-    virtual ~GameObject(){}
+    virtual ~GameObject(){
+
+        if(texture != nullptr){
+            SDL_DestroyTexture(texture);
+        }
+    }
+
+    void SetPosition(float x, float y){
+        this->posX = x;
+        this->posY = y;
+    }
+    void setSize(int w, int h){
+        this->width = w;
+        this->height = h;
+    }
+    float GetPositionX() const { return this->posX; }
+    float GetPositionY() const { return this->posY; }
+    int GetWidth() const { return this->width; }
+    int GetHeight() const { return this->height; }
+    SDL_Texture* GetTexture() const { return this->texture; }
 };
 
 #endif
