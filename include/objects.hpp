@@ -13,8 +13,7 @@ class GameObject{
     std::string imgName;
 
     public:
-    GameObject(float x = 0, float y = 0, std::string inputImg = "index.jpg"): posX(x), posY(y), imgName(inputImg) {}
-
+    GameObject(float x = 0, float y = 0, int w = 0, int h = 0, std::string inputImg = "index.jpg"): posX(x), posY(y), width(w), height(h), imgName(inputImg) {}
     
     virtual void Update(float dt);
     virtual void Render(SDL_Renderer *ren);
