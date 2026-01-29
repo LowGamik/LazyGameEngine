@@ -9,7 +9,7 @@
 
 int main(){
     auto engine = std::make_unique<Engine>();
-    engine->AddObject(std::make_unique<GameObject>(120.0f, 100.0f, "index.jpg"));
+    engine->AddObject(std::make_unique<GameObject>(120.0f, 100.0f, 100, 100, "index.jpg"));
 
 
     if(!(engine->InitEngine())){
